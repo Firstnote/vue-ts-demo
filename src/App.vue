@@ -22,8 +22,8 @@
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
-import ColItem from './components/col.vue';
-import RowItem from './components/row.vue';
+import ColItem from './components/Layout/col.vue';
+import RowItem from './components/Layout/row.vue';
 
 @Component({
   components: {

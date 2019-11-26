@@ -6,6 +6,7 @@ import App from './App.vue'
 import router from './router'
 import FastClick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
+import Cube from '../src/index.js'
 
 /* eslint-disable no-unused-vars */
 // import vConsole from 'vconsole'
@@ -16,7 +17,7 @@ FastClick.attach(document.body) //  hack the active pseudo-classes failure cause
 
 Vue.use(VueRouter)
 Vue.use(VueLazyload)
-
+Vue.use(Cube)
 /* eslint-disable no-new */
 new Vue({
   router,
