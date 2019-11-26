@@ -3,6 +3,8 @@ import {Component, Prop, Vue, Inject} from 'vue-property-decorator';
 
 @Component
 export default class Col extends Vue {
+  private name='col-item'
+
   @Prop({
     required: false,
     default: 'div',

@@ -2,7 +2,9 @@
 import { Component, Prop, Vue, Provide } from 'vue-property-decorator';
 
 @Component
-export default class Col extends Vue {
+export default class Row extends Vue {
+  private name='row-item'
+
   @Prop({ required: false , default: 'div'})
   public readonly tag!: string;
 
