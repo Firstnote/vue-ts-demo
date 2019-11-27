@@ -6,7 +6,7 @@ import App from './App.vue'
 import router from './router'
 import FastClick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
-import Cube from '../src/index.js'
+import Cube from '../src'
 
 /* eslint-disable no-unused-vars */
 // import vConsole from 'vconsole'

@@ -1,16 +1,16 @@
 <template>
 <div>
-  <row-item>
-    <col-item :span=7>
+  <Row-item>
+    <Col-item :span=7>
       123
-    </col-item>
-    <col-item :span=8>
+    </Col-item>
+    <Col-item :span=8>
       123
-    </col-item>
-    <col-item :span=9>
+    </Col-item>
+    <Col-item :span=9>
       123
-    </col-item>
-  </row-item>
+    </Col-item>
+  </Row-item>
 </div>
   
 </template>
