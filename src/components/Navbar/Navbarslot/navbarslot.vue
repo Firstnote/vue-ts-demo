@@ -3,7 +3,9 @@
   <!-- 导航主体 -->
   <div class="navbar" ref="navbar" :style="navStyle">
     <!-- 头部机型适配 -->
-    <div :style="navTopSpace"></div>
+    <div :style="navTopSpace">
+      {{position}}
+    </div>
     <!-- 浏览人数信息 -->
     <div v-if="numofpeopledata" class="message">
       <span>
@@ -40,7 +42,7 @@
 </template>
 <script lang='ts'>
 import '../../../utils/iconfont.js'
-import {Component, Prop, Vue, Inject} from 'vue-property-decorator';
+import {Component, Prop, Vue, Inject,Provide} from 'vue-property-decorator';
 
 @Component
 export default class Navbarslot extends Vue {
@@ -67,7 +69,21 @@ export default class Navbarslot extends Vue {
     default: 10
   })
   public readonly numofpeople!:number;
-  
+
+
+  @Prop({
+    required: false
+  })
+  fnc!:any
+
+  methods= {
+    on:{
+      listen(){
+        console.log('listen')
+      }
+    }
+  }
+
   get numofpeopledata(){
     return this.numofpeople
   }
@@ -104,17 +120,27 @@ export default class Navbarslot extends Vue {
     }
   }
   navleftclick() {
+    
       this.$emit("navleftclick");
+      // console.log(this.$props.fn)
+      // this.$props.goback()
+      this.$props.fnc.fnc()
   }
   navrightclick() {
       this.$emit("navrightclick");
   }
   navmiddleclick() {
       this.$emit("navmiddleclick");
+      console.log(this.$listeners.toString())
   }
+  // goback(){
+
+  // }
 }
+const slot = new Navbarslot
+console.log('slot',slot)
 </script>
-<style>
+<style lang='less'>
 .navbar {
   /* overflow: hidden; */
   top: 0;
@@ -130,6 +156,9 @@ export default class Navbarslot extends Vue {
 .navcontent .navmiddle {
   width: 100%;
   height: 42px;
+  p{
+    margin: 0
+  }
 }
 .navcontent .navleft {
   position: absolute;

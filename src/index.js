@@ -19,11 +19,13 @@
 import Col from './module/Layout/Col'
 import Row from './module/Layout/Row'
 import Navbarslot from './components/Navbar/Navbarslot'
+import Navbarsimple from './components/Navbar/Navbarsimple'
 
 const components = [
   Col,
   Row,
-  Navbarslot
+  Navbarslot,
+  Navbarsimple
 ]
 
   /* eslint-disable no-undef */
