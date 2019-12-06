@@ -20,12 +20,16 @@ import Col from './module/Layout/Col'
 import Row from './module/Layout/Row'
 import Navbarslot from './components/Navbar/Navbarslot'
 import Navbarsimple from './components/Navbar/Navbarsimple'
+import Navbarsearch from './components/Navbar/Navbarsearch'
+import Navbarpull from './components/Navbar/Navbarpull'
 
 const components = [
   Col,
   Row,
   Navbarslot,
-  Navbarsimple
+  Navbarsimple,
+  Navbarsearch,
+  Navbarpull
 ]
 
   /* eslint-disable no-undef */

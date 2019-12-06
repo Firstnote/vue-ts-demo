@@ -9,6 +9,12 @@
   <div @click="tonavsimpletest">
     点击跳转navbarsimple
   </div>
+  <div @click="tonavsearchtest">
+    点击跳转navbarsearch
+  </div>
+  <div @click="tonavpulltest">
+    点击跳转navbarpull
+  </div>
 </div>
 
 </template>
@@ -27,6 +33,12 @@
       },
       tonavsimpletest(){
         this.$router.push('/navbarview/navbarsimple')
+      },
+      tonavsearchtest(){
+        this.$router.push('/navbarview/navbarsearch')
+      },
+      tonavpulltest(){
+        this.$router.push('/navbarpullview')
       }
     }
   }

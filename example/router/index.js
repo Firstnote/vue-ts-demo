@@ -5,6 +5,8 @@ import View from '../view/view.vue'
 import Nonavbarview from '../view/nonavbarview.vue'
 import Navbarview from '../view/navbarview.vue'
 import Navbarsimple from '../pages/Navbarsimple.vue'
+import Navbarsearch from '../pages/Navbarsearch.vue'
+import Navbarpullview from '../view/navbarpullview.vue'
 const routes = [
   {
     path:'/navbar',
@@ -24,6 +26,10 @@ const routes = [
       }
     ]
   },
+  { 
+    path: '/navbarpullview',
+    component: Navbarpullview
+  },
   {
     path:'/navbarview',
     component:Navbarview,
@@ -35,6 +41,10 @@ const routes = [
       {
         path:'navbarslot',
         component:Navbarslot
+      },
+      {
+        path:'navbarsearch',
+        component:Navbarsearch
       }
     ]
   },

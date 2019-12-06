@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbarsimple :title="'测试'"></navbarsimple>
+    <navbarsimple :title="'测试'" :numofpeople='0' @navleftclick='goback'></navbarsimple>
   </div>
 </template>
 <script>
@@ -13,8 +13,12 @@ export default {
         }
       }
     }
+  },
+  methods:{
+    goback(){
+       this.$router.go(-1)
+     }
   }
-
 
 }
 

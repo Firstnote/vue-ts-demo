@@ -1,0 +1,3 @@
+<template>
+  <navbarsearch></navbarsearch>
+</template>
