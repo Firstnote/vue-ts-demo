@@ -42,25 +42,13 @@ import { Component, Prop, Vue, Provide ,Emit} from "vue-property-decorator";
 export default class Navbarslot extends Vue {
   @Prop({
     required: false,
-    default: true
-  })
-  public sticky!: boolean;
-
-  @Prop({
-    required: false,
-    default: false
-  })
-  public fixed!: boolean;
-
-  @Prop({
-    required: false,
     default: "单标题"
   })
   public title!: string;
 
   @Prop({
     required: false,
-    default: 12
+    default: 0
   })
   public numofpeople!: number;
 

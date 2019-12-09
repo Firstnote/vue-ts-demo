@@ -132,9 +132,6 @@ export default class Navbarpull extends Vue {
 
   items: any[] = [];
   pullDownY: number = 0;
-  pulldown() {
-    return this.$refs.pulldown;
-  }
   onScrollHandle(pos: any) {
     this.pullDownY = pos.y;
     if (pos.y > 0) {
@@ -192,8 +189,6 @@ export default class Navbarpull extends Vue {
 <style lang='less'>
 .navbarpull {
   height: 100vh;
-  /* overflow: hidden; */
-  /* background: red; */
   .navbarpullhead {
     position: fixed;
     width: 100%;
@@ -214,14 +209,11 @@ export default class Navbarpull extends Vue {
     /* background-position:bottom 3px; */
     background-position: bottom right;
   }
-}
-.bottomspace {
-  width: 100%;
-  height: 100px;
-}
-.pulldown-content {
+  .pulldown-content {
   position: absolute;
   bottom: 0;
   color: #eee;
 }
+}
+
 </style>
