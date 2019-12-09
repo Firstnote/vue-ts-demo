@@ -58,13 +58,10 @@
 </div>
 </template>
 
-<style>
+<style lang='less'>
 .topstyle{
   position: sticky;
-  top:0
+  top:0;
 }
-.navbar{
-  position: sticky;
-  top:0
-}
+
 </style>

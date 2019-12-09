@@ -2,9 +2,7 @@
   <div class="navbarsearch">
     <Navbarslot
       v-bind="$props"
-      @navmiddleclick="searchclick"
-      @navleftclick="msgclick"
-      @navrightclick="menuclick"
+      v-on="$listeners"
     >
       <template slot="navleft">
         <div class="msgimgwrap">
@@ -44,15 +42,6 @@ export default class Navbarsearch extends Vue {
     default: 14
   })
   msgnum!: number;
-  searchclick() {
-    this.$emit("navmiddleclick");
-  }
-  msgclick() {
-    this.$emit("navleftclick");
-  }
-  menuclick() {
-    this.$emit("navrightclick");
-  }
 }
 </script>
 <style lang='less'>

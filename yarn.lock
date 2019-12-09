@@ -1540,6 +1540,14 @@ babel-plugin-transform-modules@^0.1.1:
     lodash.kebabcase "^4.1.1"
     lodash.snakecase "^4.1.1"
 
+babel-runtime@^6.0.0:
+  version "6.26.0"
+  resolved "https://registry.npm.taobao.org/babel-runtime/download/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
+
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/balanced-match/download/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -1574,6 +1582,13 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
+
+better-scroll@~1.12.6:
+  version "1.12.6"
+  resolved "https://registry.npm.taobao.org/better-scroll/download/better-scroll-1.12.6.tgz#7548860f8b8c08c87e5af062e1da6e2c68c98337"
+  integrity sha1-dUiGD4uMCMh+WvBi4dpuLGjJgzc=
+  dependencies:
+    babel-runtime "^6.0.0"
 
 bfj@^6.1.1:
   version "6.1.2"
@@ -2331,6 +2346,11 @@ core-js-pure@^3.0.0:
   resolved "https://registry.npm.taobao.org/core-js-pure/download/core-js-pure-3.4.2.tgz#ffd4ea4dc1f8517f75d4a929986a214629477417"
   integrity sha1-/9TqTcH4UX911KkpmGohRilHdBc=
 
+core-js@^2.4.0:
+  version "2.6.10"
+  resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.10.tgz?cache=0&sync_timestamp=1575309530604&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-2.6.10.tgz#8a5b8391f8cc7013da703411ce5b585706300d7f"
+  integrity sha1-iluDkfjMcBPacDQRzltYVwYwDX8=
+
 core-js@^3.3.2, core-js@^3.4.2:
   version "3.4.2"
   resolved "https://registry.npm.taobao.org/core-js/download/core-js-3.4.2.tgz?cache=0&sync_timestamp=1574362866974&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-3.4.2.tgz#ee2b1a60b50388d8ddcda8cdb44a92c7a9ea76df"
@@ -2591,6 +2611,14 @@ csso@^4.0.2:
   integrity sha1-5fgas6Vrju+38Aks5yeTKfRU3j0=
   dependencies:
     css-tree "1.0.0-alpha.37"
+
+cube-ui@~1.12.15:
+  version "1.12.34"
+  resolved "https://registry.npm.taobao.org/cube-ui/download/cube-ui-1.12.34.tgz#fd401c0f78c886962f6eb0b977723e2829f39aaf"
+  integrity sha1-/UAcD3jIhpYvbrC5d3I+KCnzmq8=
+  dependencies:
+    better-scroll "~1.12.6"
+    vue-create-api "^0.2.3"
 
 current-script-polyfill@^1.0.0:
   version "1.0.0"
@@ -6370,6 +6398,11 @@ regenerate@^1.4.0:
   resolved "https://registry.npm.taobao.org/regenerate/download/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha1-SoVuxLVuQHfFV1icroXnpMiGmhE=
 
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "https://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+  integrity sha1-vgWtf5v30i4Fb5cmzuUBf78Z4uk=
+
 regenerator-runtime@^0.13.2:
   version "0.13.3"
   resolved "https://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
@@ -7744,6 +7777,11 @@ vue-cli-plugin-cube-ui@^0.2.5:
   dependencies:
     webpack-post-compile-plugin "^1.0.0"
     webpack-transform-modules-plugin "^0.4.0"
+
+vue-create-api@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.npm.taobao.org/vue-create-api/download/vue-create-api-0.2.3.tgz#920b4e76349cf6aef692a6f743b96dc09eade5cd"
+  integrity sha1-kgtOdjSc9q72kqb3Q7ltwJ6t5c0=
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

@@ -36,7 +36,7 @@
 </template>
 <script lang='ts'>
 import "../../../common/icon/iconfont.js";
-import { Component, Prop, Vue, Provide } from "vue-property-decorator";
+import { Component, Prop, Vue, Provide ,Emit} from "vue-property-decorator";
 
 @Component
 export default class Navbarslot extends Vue {
@@ -77,16 +77,21 @@ export default class Navbarslot extends Vue {
       return 0;
     }
   }
-  navleftclick() {
-    this.$emit("navleftclick");
+  // navleftclick() {
+  //   this.$emit("navleftclick");
+  // }
+  @Emit()
+  navleftclick(){
+    return
   }
-
+  @Emit()
   navrightclick() {
-    this.$emit("navrightclick");
+    return
   }
 
+  @Emit()
   navmiddleclick() {
-    this.$emit("navmiddleclick");
+   return
   }
 
   get navTopSpace() {
@@ -99,6 +104,7 @@ export default class Navbarslot extends Vue {
 <style lang='less'>
 .navbar {
   /* overflow: hidden; */
+  position: sticky;
   top: 0;
   z-index: 100;
   width: 100%;
