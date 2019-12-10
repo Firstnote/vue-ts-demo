@@ -22,6 +22,7 @@ import Navbarslot from './components/Navbar/Navbarslot'
 import Navbarsimple from './components/Navbar/Navbarsimple'
 import Navbarsearch from './components/Navbar/Navbarsearch'
 import Navbarpull from './components/Navbar/Navbarpull'
+import Chart from './components/Chart'
 
 const components = [
   Col,
@@ -29,7 +30,8 @@ const components = [
   Navbarslot,
   Navbarsimple,
   Navbarsearch,
-  Navbarpull
+  Navbarpull,
+  Chart
 ]
 
   /* eslint-disable no-undef */

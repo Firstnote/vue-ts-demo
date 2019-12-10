@@ -15,6 +15,9 @@
   <div @click="tonavpulltest">
     点击跳转navbarpull
   </div>
+  <div @click="tocharttest">
+    点击跳转chart
+  </div>
 </div>
 
 </template>
@@ -39,6 +42,9 @@
       },
       tonavpulltest(){
         this.$router.push('/navbarpullview')
+      },
+      tocharttest(){
+        this.$router.push('/nonavbarview/chart')
       }
     }
   }

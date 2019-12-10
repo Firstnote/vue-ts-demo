@@ -23,6 +23,10 @@ const routes = [
       {
         path:'layout',
         component:Layout
+      },
+      {
+        path:'chart',
+        component:()=>import('../pages/Chart.vue')
       }
     ]
   },
