@@ -18,6 +18,9 @@
   <div @click="tocharttest">
     点击跳转chart
   </div>
+  <div @click="toaddresspickerviewtest">
+    点击跳转addresspicker
+  </div>
 </div>
 
 </template>
@@ -45,6 +48,9 @@
       },
       tocharttest(){
         this.$router.push('/nonavbarview/chart')
+      },
+      toaddresspickerviewtest(){
+        this.$router.push('./nonavbarview/addresspicker')
       }
     }
   }

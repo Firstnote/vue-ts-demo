@@ -7,6 +7,7 @@ import Navbarview from '../view/navbarview.vue'
 import Navbarsimple from '../pages/Navbarsimple.vue'
 import Navbarsearch from '../pages/Navbarsearch.vue'
 import Navbarpullview from '../view/navbarpullview.vue'
+
 const routes = [
   {
     path:'/navbar',
@@ -27,6 +28,10 @@ const routes = [
       {
         path:'chart',
         component:()=>import('../pages/Chart.vue')
+      },
+      {
+        path:'addresspicker',
+        component:()=>import('../pages/Addresspicker.vue')
       }
     ]
   },
