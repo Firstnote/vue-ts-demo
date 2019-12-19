@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h2>
       <Addresspicker @confirm='confirm'></Addresspicker>
-    </h2>
   </div>
 </template>
 

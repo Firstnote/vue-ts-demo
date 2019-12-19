@@ -32,6 +32,10 @@ const routes = [
       {
         path:'addresspicker',
         component:()=>import('../pages/Addresspicker.vue')
+      },
+      {
+        path:'test',
+        component:()=>import('../pages/Test.vue')
       }
     ]
   },

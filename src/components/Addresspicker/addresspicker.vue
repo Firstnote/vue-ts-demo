@@ -32,9 +32,15 @@ export default class Addresspicker extends Vue {
   showarr: string[] = []; //展示区域
   headarr: string[] = []; //头部
   comparearr: string[] = []; //数据存放
+  @Prop({
+    required:false,
+    default:()=>address
+  })
+  address!:any
+
   get province() {
     let province: string[] = [];
-    for (let key in address) {
+    for (let key in this.address) {
       province.push(key);
     }
     return province;
@@ -62,20 +68,20 @@ export default class Addresspicker extends Vue {
     this.showarr = [];
     if (val.length == 0) {
       //初始状态省
-      addressarr = address;
+      addressarr = this.address;
     }
     if (val.length == 1) {
-      addressarr = address[val[0]];
+      addressarr = this.address[val[0]];
     }
     if (val.length == 2) {
-      addressarr = address[val[0]][val[1]];
+      addressarr = this.address[val[0]][val[1]];
     }
     for (let key in addressarr) {
       this.showarr.push(key);
     }
 
     if (val.length == 3) {
-      this.showarr = address[this.headarr[0]][this.headarr[1]][this.headarr[2]];
+      this.showarr = this.address[this.headarr[0]][this.headarr[1]][this.headarr[2]];
     }
   }
   get listarr() {
