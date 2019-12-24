@@ -8,9 +8,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "better-scroll": "^1.15.2",
     "chart.js": "^2.9.3",
     "core-js": "^3.4.2",
-    "cube-ui": "~1.12.15",
     "fastclick": "^1.0.6",
     "vue": "^2.6.10",
     "vue-chartkick": "^0.6.0",
@@ -29,20 +29,6 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "typescript": "~3.5.3",
-    "vue-cli-plugin-cube-ui": "^0.2.5",
     "vue-template-compiler": "^2.6.10"
-  },
-  "transformModules": {
-    "cube-ui": {
-      "transform": "cube-ui/lib/${member}",
-      "kebabCase": true,
-      "style": {
-        "ignore": [
-          "create-api",
-          "better-scroll",
-          "locale"
-        ]
-      }
-    }
   }
 }

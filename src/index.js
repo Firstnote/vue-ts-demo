@@ -24,6 +24,7 @@ import Navbarsearch from './components/Navbar/Navbarsearch'
 import Navbarpull from './components/Navbar/Navbarpull'
 import Chart from './components/Chart'
 import Addresspicker from './components/Addresspicker'
+import Scroll from './components/Scroll'
 
 const components = [
   Col,
@@ -33,7 +34,8 @@ const components = [
   Navbarsearch,
   Navbarpull,
   Chart,
-  Addresspicker
+  Addresspicker,
+  Scroll
 ]
 
   /* eslint-disable no-undef */

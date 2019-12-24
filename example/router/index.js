@@ -36,6 +36,10 @@ const routes = [
       {
         path:'test',
         component:()=>import('../pages/Test.vue')
+      },
+      {
+        path:'scroll',
+        component:()=>import('../pages/Scroll.vue')
       }
     ]
   },

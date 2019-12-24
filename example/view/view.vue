@@ -8,6 +8,7 @@
     <div @click="tonavpulltest">点击跳转navbarpull</div>
     <div @click="tocharttest">点击跳转chart</div>
     <div @click="toaddresspickerviewtest">点击跳转addresspicker</div>
+    <div @click="toscrollviewtest">点击跳转scroll</div>
   </div>
 </template>
 <script>
@@ -39,6 +40,9 @@ export default {
     },
     toaddresspickerviewtest() {
       this.$router.push("./nonavbarview/addresspicker");
+    },
+    toscrollviewtest(){
+      this.$router.push("./nonavbarview/scroll")
     }
   }
 };

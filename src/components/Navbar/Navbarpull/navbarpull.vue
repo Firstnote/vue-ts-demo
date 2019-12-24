@@ -7,7 +7,7 @@
         <slot name="navright" slot="navright"></slot>
       </Navbarslot>
     </div>
-    <cube-scroll
+    <scroll
       :options="options"
       v-bind="$props"
       :data="items"
@@ -19,7 +19,7 @@
       @scroll-end="onScrollEndHandle"
     >
       <template slot="pulldown" slot-scope="props">
-        <div v-if="props" class="cube-pulldown-wrapper" ref="pulldown">
+        <div v-if="props" class="zl-pulldown-wrapper" ref="pulldown">
           <div class="pulldown-content" v-show="showpulldown">
             <!-- 下拉刷新自定义插槽 -->
             <slot v-bind="props" name="pulldowncontent">
@@ -91,14 +91,13 @@
         <p>scroll content</p>
         <p>scroll end</p>
       </slot>
-    </cube-scroll>
+    </scroll>
   </div>
 </template>
 
 <script lang='ts'>
-import "./cube-ui.js";
-import { Scroll } from "cube-ui";
 import Navbarslot from "../Navbarslot/navbarslot.vue";
+import Scroll from "../../Scroll/scroll.vue"
 import {
   Component,
   Prop,
@@ -110,7 +109,8 @@ import {
 
 @Component({
   components: {
-    Navbarslot
+    Navbarslot,
+    Scroll
   },
   mixins: [Navbarslot, Scroll]
 })
@@ -135,10 +135,10 @@ export default class Navbarpull extends Vue {
   onScrollHandle(pos: any) {
     this.pullDownY = pos.y;
     if (pos.y > 0) {
-      this.$refs.navbarpull.$refs.navmiddlespan.style.opacity = 0;
-      this.$refs.pulldown.style.transform = `translateY(${pos.y}px)`;
+      (this.$refs as any).navbarpull.$refs.navmiddlespan.style.opacity = 0;
+      (this.$refs as any).pulldown.style.transform = `translateY(${pos.y}px)`;
     } else {
-      this.$refs.navbarpull.$refs.navmiddlespan.style.opacity = 1;
+      (this.$refs as any).navbarpull.$refs.navmiddlespan.style.opacity = 1;
     }
     this.$emit("scroll", pos);
   }
@@ -177,12 +177,12 @@ export default class Navbarpull extends Vue {
     //   height: this.navbarcrollheight + "px",
     //   width: "100%"
     // };
-    this.$refs.pulldown.style.top =
-      this.$refs.navbarpull.$el.offsetHeight -
-      this.$refs.pulldown.offsetHeight +
+    (this.$refs.pulldown as HTMLElement).style.top =
+      (this.$refs.navbarpull as any).$el.offsetHeight -
+      (this.$refs.pulldown as HTMLElement).offsetHeight +
       "px";
-    this.$refs.bottomspace.style.height =
-      this.$refs.navbarpull.$el.offsetHeight + "px";
+    (this.$refs.bottomspace  as HTMLElement).style.height =
+      (this.$refs.navbarpull as any).$el.offsetHeight + "px";
   }
 }
 </script>
@@ -198,7 +198,7 @@ export default class Navbarpull extends Vue {
       background: none;
     }
   }
-  .cube-pulldown-wrapper {
+  .zl-pulldown-wrapper {
     /* 下拉刷新背景图所在位置 */
     height: 400px;
     z-index: 50;
