@@ -77,7 +77,7 @@ export default class Navbarsimple extends Vue {
   }
   get navcoverstyle() {
     return {
-      height: this.$refs.navbarsimple.$refs.navbar.clientHeight + "px"
+      height: (this.$refs as any).navbarsimple.$refs.navbar.clientHeight + "px"
     };
   }
 }
