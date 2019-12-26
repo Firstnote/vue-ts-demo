@@ -19,11 +19,23 @@
 import Col from './module/Layout/Col'
 import Row from './module/Layout/Row'
 import Navbarslot from './components/Navbar/Navbarslot'
+import Navbarsimple from './components/Navbar/Navbarsimple'
+import Navbarsearch from './components/Navbar/Navbarsearch'
+import Navbarpull from './components/Navbar/Navbarpull'
+import Chart from './components/Chart'
+import Addresspicker from './components/Addresspicker'
+import Scroll from './components/Scroll'
 
 const components = [
   Col,
   Row,
-  Navbarslot
+  Navbarslot,
+  Navbarsimple,
+  Navbarsearch,
+  Navbarpull,
+  Chart,
+  Addresspicker,
+  Scroll
 ]
 
   /* eslint-disable no-undef */

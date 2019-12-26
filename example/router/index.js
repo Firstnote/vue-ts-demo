@@ -5,6 +5,9 @@ import View from '../view/view.vue'
 import Nonavbarview from '../view/nonavbarview.vue'
 import Navbarview from '../view/navbarview.vue'
 import Navbarsimple from '../pages/Navbarsimple.vue'
+import Navbarsearch from '../pages/Navbarsearch.vue'
+import Navbarpullview from '../view/navbarpullview.vue'
+
 const routes = [
   {
     path:'/navbar',
@@ -21,8 +24,28 @@ const routes = [
       {
         path:'layout',
         component:Layout
+      },
+      {
+        path:'chart',
+        component:()=>import('../pages/Chart.vue')
+      },
+      {
+        path:'addresspicker',
+        component:()=>import('../pages/Addresspicker.vue')
+      },
+      {
+        path:'test',
+        component:()=>import('../pages/Test.vue')
+      },
+      {
+        path:'scroll',
+        component:()=>import('../pages/Scroll.vue')
       }
     ]
+  },
+  { 
+    path: '/navbarpullview',
+    component: Navbarpullview
   },
   {
     path:'/navbarview',
@@ -35,6 +58,10 @@ const routes = [
       {
         path:'navbarslot',
         component:Navbarslot
+      },
+      {
+        path:'navbarsearch',
+        component:Navbarsearch
       }
     ]
   },

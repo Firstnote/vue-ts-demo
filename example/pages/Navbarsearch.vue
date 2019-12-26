@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <navbarsimple :title="'测试'" :numofpeople='0' @navleftclick='goback'></navbarsimple>
-  </div>
+  <navbarsearch @navleftclick='goback'></navbarsearch>
 </template>
+
 <script>
 export default {
   data(){
@@ -21,5 +20,4 @@ export default {
   }
 
 }
-
 </script>
