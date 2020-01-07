@@ -1,7 +1,5 @@
-<template>
-  <div>
+<template> 
     <navbarsimple :title="'测试'" :numofpeople='0' @navleftclick='goback'></navbarsimple>
-  </div>
 </template>
 <script>
 export default {
@@ -23,3 +21,9 @@ export default {
 }
 
 </script>
+<style scoped>
+.navbarsimple{
+  position: sticky;
+  top: 0;
+}
+</style>

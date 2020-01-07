@@ -1,43 +1,50 @@
 <template>
-  <div class="address-picker">
-    <div class="address-picker-head">
-      <div class="address-picker-head-bottom"></div>
-      <div v-for="(item,index) in listarr" :key="index" @click="select(index)">
-        <span :class="{'select-active':index==listarr.length-1}">{{item}}</span>
+  <popup :turnOn="turnOn" :names="turnup">
+    <div class="zl-address-picker" slot="popup">
+      <div class="zl-zl-address-picker-button">
+        <div class="zl-zl-address-picker-buttonR" @click="cancle">取消</div>
+        <span>请选择地址</span>
+      </div>
+      <div class="zl-address-picker-head">
+        <div class="zl-address-picker-head-bottom"></div>
+        <div v-for="(item,index) in listarr" :key="index" @click="select(index)">
+          <span :class="{'zl-select-active':index==listarr.length-1}">{{item}}</span>
+        </div>
+      </div>
+      <div class="zl-address-picker-content">
+        <div
+          v-for="(item,index) in showarr"
+          :key="index"
+          @click="next(item)"
+          :class="{'zl-select-active':hasselected(item)}"
+        >{{item}}</div>
       </div>
     </div>
-    <div class="address-picker-content">
-      <div
-        v-for="(item,index) in showarr"
-        :key="index"
-        @click="next(item)"
-        :class="{'select-active':hasselected(item)}"
-      >{{item}}</div>
-    </div>
-  </div>
+  </popup>
 </template>
 
 <script lang='ts'>
 import address1 from "./address.js";
-const address:any = address1
-import {
-  Component,
-  Prop,
-  Vue,
-  Watch,
-  Emit
-} from "vue-property-decorator";
-@Component
+const address: any = address1;
+import { Component, Prop, Vue, Watch, Emit } from "vue-property-decorator";
+import Popup from "../Popup/popup.vue";
+
+@Component({
+  components: {
+    Popup
+  }
+})
 export default class Addresspicker extends Vue {
   showarr: string[] = []; //展示区域
   headarr: string[] = []; //头部
   comparearr: string[] = []; //数据存放
+  turnOn = false;
+  turnup = "";
   @Prop({
-    required:false,
-    default:()=>address
+    required: false,
+    default: () => address
   })
-  address!:any
-
+  address!: any;
   get province() {
     let province: string[] = [];
     for (let key in this.address) {
@@ -64,24 +71,33 @@ export default class Addresspicker extends Vue {
         confirmmsg.splice(1, 1);
       }
       this.confirm(confirmmsg);
+    } else {
+      this.showarr = [];
     }
-    this.showarr = [];
+
     if (val.length == 0) {
       //初始状态省
       addressarr = this.address;
+      for (let key in addressarr) {
+        this.showarr.push(key);
+      }
     }
     if (val.length == 1) {
       addressarr = this.address[val[0]];
+      for (let key in addressarr) {
+        this.showarr.push(key);
+      }
     }
     if (val.length == 2) {
       addressarr = this.address[val[0]][val[1]];
+      for (let key in addressarr) {
+        this.showarr.push(key);
+      }
     }
-    for (let key in addressarr) {
-      this.showarr.push(key);
-    }
-
     if (val.length == 3) {
-      this.showarr = this.address[this.headarr[0]][this.headarr[1]][this.headarr[2]];
+      this.showarr = this.address[this.headarr[0]][this.headarr[1]][
+        this.headarr[2]
+      ];
     }
   }
   get listarr() {
@@ -91,8 +107,21 @@ export default class Addresspicker extends Vue {
       return this.headarr;
     }
   }
+  showup() {
+    this.turnup = "turnup";
+    this.turnOn = true;
+  }
+  hidein() {
+    this.turnup = "";
+    this.turnOn = false;
+  }
   next(item: string): void {
-    this.headarr.push(item);
+    if(this.headarr.length>=4){
+      this.headarr.splice(3)
+      this.headarr.push(item)
+    }else{
+      this.headarr.push(item);
+    }
     this.comparearr = [...this.headarr];
   }
   select(index: number): void {
@@ -107,32 +136,60 @@ export default class Addresspicker extends Vue {
     });
     return flag;
   }
+  cancle() {
+    this.hidein();
+  }
 }
 </script>
-<style lang='less'>
-.address-picker {
+<style lang='stylus'>
+.zl-zl-address-picker-button {
+  text-align: center;
+  line-height: 30px;
+  overflow: hidden;
+
+  div {
+    width: 60px;
+    height: 30px;
+  }
+
+  .zl-zl-address-picker-buttonL {
+    float: left;
+  }
+
+  .zl-zl-address-picker-buttonR {
+    float: right;
+    color: orange;
+  }
+}
+
+.zl-address-picker {
   width: 100%;
   height: 30px;
-  .address-picker-head {
+
+  .zl-address-picker-head {
     width: 100%;
     overflow: hidden;
     position: relative;
+
     div {
       line-height: 30px;
       float: left;
       width: 25%;
       height: 30px;
+
       span {
         display: inline-block;
         margin-left: 10px;
         height: 28px;
       }
-      .select-active {
+
+      .zl-select-active {
         color: #de3031;
         border-bottom: 2px solid #de3031;
       }
     }
-    .address-picker-head-bottom {
+
+    .zl-address-picker-head-bottom {
       z-index: -1;
       width: 100%;
       position: absolute;
@@ -142,16 +199,21 @@ export default class Addresspicker extends Vue {
       background: #eee;
     }
   }
-  .address-picker-content {
+
+  .zl-address-picker-content {
+    position: absolute;
+    bottom: 0;
+    top: 60px;
     width: 100%;
-    height: 300px;
     overflow-y: scroll;
     line-height: 30px;
+
     div {
       height: 30px;
       padding-left: 10px;
     }
-    .select-active {
+
+    .zl-select-active {
       color: #de3031;
     }
   }

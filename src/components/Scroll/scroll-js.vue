@@ -572,7 +572,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="stylus">
 // @require "../../common/stylus/variable.styl"
 
 .zl-scroll-wrapper {

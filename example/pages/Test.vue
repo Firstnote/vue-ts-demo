@@ -1,6 +1,6 @@
 <template>
   <div class="test-view">
-    <!-- 一级页面 -->
+    <!-- 一级页面 
     <div class="page" v-show="headarr.length==0">
       <div v-if="Array.isArray(province)">
         <div v-for="(item,index) in province" :key="index">{{item}}</div>
@@ -9,7 +9,7 @@
         <div v-for="(item,index) in province" :key="index">{{index}}</div>
       </div>
     </div>
-    <!-- 二级页面 -->
+    二级页面
     <div class="page" v-show="headarr.length==1">
       <div v-if="Array.isArray(city)">
         <div v-for="(item,index) in city" :key="index">{{item}}</div>
@@ -18,7 +18,7 @@
         <div v-for="(item,index) in city" :key="index">{{index}}</div>
       </div>
     </div>
-    <!-- 三级页面 -->
+    三级页面
     <div class="page" v-show="headarr.length==2">
       <div v-if="Array.isArray(county)">
         <div v-for="(item,index) in county" :key="index">{{item}}</div>
@@ -27,7 +27,7 @@
         <div v-for="(item,index) in county" :key="index">{{index}}</div>
       </div>
     </div>
-    <!-- 四级页面 -->
+    四级页面
     <div class="page" v-show="headarr.length==3">
       <div v-if="Array.isArray(street)">
         <div v-for="(item,index) in street" :key="index">{{item}}</div>
@@ -35,7 +35,61 @@
       <div v-else>
         <div v-for="(item,index) in street" :key="index">{{index}}</div>
       </div>
+    </div> -->
+    
+    <div @touchstart="touchtest">
+      <p>touchtest</p>
     </div>
+    <div @click="clicktest">
+      <p>clicktest</p>
+    </div>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
   </div>
 </template>
 
@@ -55,9 +109,14 @@ export default class Test extends Vue {
   @Watch("headarr", { immediate: true, deep: true })
   handle(val: string[], oldVal: string[]){
 
-  }
+  };
   
-
+  touchtest(){
+    alert('touch')
+  }
+  clicktest(){
+    alert('click')
+  }
 }
 </script>
 

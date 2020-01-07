@@ -89,7 +89,7 @@ export default class Navbarslot extends Vue {
   }
 }
 </script>
-<style lang='less'>
+<style lang='stylus'>
 .navbar {
   /* overflow: hidden; */
   position: sticky;
@@ -97,7 +97,7 @@ export default class Navbarslot extends Vue {
   z-index: 100;
   width: 100%;
   text-align: center;
-  background: rgba(255, 133, 0);
+  background: rgb(255, 133, 0);
   .navcontent {
     position: relative;
     vertical-align: middle;
@@ -135,11 +135,11 @@ export default class Navbarslot extends Vue {
     bottom: -40px;
     left: 0;
     right: 0;
-    /* background: rgba(255, 133, 0); */
+    /* background: rgb(255, 133, 0); */
     /* width: 300px; */
     height: 30px;
     span {
-      background: rgba(255, 133, 0);
+      background: rbg(255, 133, 0);
       padding: 2px 50px;
       border-radius: 10px;
       color: aliceblue;

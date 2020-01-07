@@ -1,8 +1,5 @@
 <template>
-<div>
   <navbarslot :numofpeople='numofpeople' @navleftclick="goback"></navbarslot>
-</div>
-
 </template>
 <script>
   export default {
@@ -25,3 +22,9 @@
     }
   }
 </script>
+<style lang='less' scoped>
+  .navbar{
+    position: sticky;
+    top:0
+  }
+</style>

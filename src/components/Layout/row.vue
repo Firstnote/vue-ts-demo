@@ -67,7 +67,7 @@ export default class Row extends Vue {
   }
 }
 </script>
-<style lang="less">
+<style lang="stylus">
 .row {
 	word-spacing: -5px;
 	text-align: start;

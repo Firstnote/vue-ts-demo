@@ -44,7 +44,7 @@ export default class Navbarsearch extends Vue {
   msgnum!: number;
 }
 </script>
-<style lang='less'>
+<style lang='stylus'>
 .navbarsearch {
   .navbar {
     background: red;

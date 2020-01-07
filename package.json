@@ -28,6 +28,8 @@
     "@vue/cli-service": "^4.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
     "typescript": "~3.5.3",
     "vue-template-compiler": "^2.6.10"
   }

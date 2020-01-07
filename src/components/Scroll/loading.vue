@@ -27,7 +27,7 @@ export default class Loading extends Vue {
   }
 }
 </script>
-<style lang="less">
+<style lang="stylus">
 @keyframes spinner-fade {
   0% {
     opacity: 0.85;
@@ -52,24 +52,18 @@ export default class Loading extends Vue {
   height: 1em;
 }
 
-.zl-loading-spinner {
-  position: absolute;
-  left: 44.5%;
-  top: 37%;
-  width: 2px; // for rem
-  height: 25%;
-  border-radius: 50% / 20%;
-  opacity: 0.25;
-  background-color: #ddd;
-  animation: spinner-fade 1s linear infinite;
-  .loading-class(12);
-  .loading-class(@i,@n:1) when(@i>=@n) {
-    &:nth-child(@{i}) {
-      animation-delay: (@i - 1)/12s;
-      transform: rotate(30deg * (@i - 6)) translateY(-150%);
-    }
-
-    .loading-class(@i - 1);
-  }
-}
+.zl-loading-spinner
+  position absolute
+  left 44.5%
+  top 37%
+  width 2px
+  height 25%
+  border-radius 50% / 20%
+  opacity 0.25
+  background-color #ddd
+  animation spinner-fade 1s linear infinite
+  for i in (1...13)
+    &:nth-child({i})
+      animation-delay (i - 1)/12s
+      transform rotate(30deg * (i - 6)) translateY(-150%)
 </style>

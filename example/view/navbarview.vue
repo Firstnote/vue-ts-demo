@@ -1,8 +1,8 @@
 <template>
 <div>
-  <div class="topstyle">
+
 <router-view />
-  </div>
+
     
   <h2>this is navbartest page</h2>
   <h2>this is navbartest page</h2>

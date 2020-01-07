@@ -186,7 +186,7 @@ export default class Navbarpull extends Vue {
   }
 }
 </script>
-<style lang='less'>
+<style lang='stylus'>
 .navbarpull {
   height: 100vh;
   .navbarpullhead {

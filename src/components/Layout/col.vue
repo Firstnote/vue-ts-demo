@@ -53,29 +53,18 @@ export default class Col extends Vue {
 
 }
 </script>
-<style lang='less'>
-.background(@n) when(mod(@n,2)>0){
-  background-color:rgba(60,150,227);
-}
-.background(@n) when not(mod(@n,2)>0){
-  background-color:rgba(60,199,227);
-}
-.col-class(24);
-.col-class(@i,@n:1) when(@n<=@i) {
-  .col-@{n} {
-    width: (100% / @i) * @n;
-    .background(@n)
-  }
-  .col-offset-@{n} {
-    margin-left: (100% / @i) * @n;
-  }
-  .col-class(@i, @n+1);
-}
-.col {
-  float: left;
-  box-sizing: border-box;
-  min-height: 20px;
-  padding: 0 20px;
-  background-clip:content-box;
-}
+<style lang='stylus'>
+for n in (1...25)
+  .col-{n}
+    width (100%/24)*n
+    background-color even(n)?rgb(60,150,227):rgb(60,199,227)
+  .col-offset-{n}
+    margin-left (100%/24)*n
+
+.col
+  float left
+  box-sizing border-box
+  min-height 20px
+  padding 0 20px
+  background-clip content-box
 </style>

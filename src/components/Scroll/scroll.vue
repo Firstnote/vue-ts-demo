@@ -582,7 +582,7 @@ export default class Scroll extends Vue {
   }
 }
 </script>
-<style lang="less">
+<style lang="stylus">
 // @require "../../common/stylus/variable.styl"
 
 .zl-scroll-wrapper {

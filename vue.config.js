@@ -14,6 +14,12 @@ module.exports = {
       template: "public/index.html",
       filename: "index.html",
       title: "fn-ts-demo"
+    },
+    main: {
+      entry: "document/main.js",
+      template: "document/index.html",
+      filename: "main.html",
+      title: "document"
     }
   }
 }

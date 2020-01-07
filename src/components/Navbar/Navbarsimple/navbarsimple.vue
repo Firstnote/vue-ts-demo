@@ -82,7 +82,7 @@ export default class Navbarsimple extends Vue {
   }
 }
 </script>
-<style lang='less'>
+<style lang='stylus'>
 .navbarsimple {
   .navbar {
     .firsttitle {
