@@ -6,8 +6,9 @@
 import "./chart.js";
 
 import { Component, Prop, Vue, Mixins } from "vue-property-decorator";
-
-@Component({ mixins: [Chartkick] })
+// import Chartkick from 'chartkick'
+@Component
+// ({ mixins: [Chartkick] })
 export default class Chart extends Vue {
   @Prop({
     required: false,

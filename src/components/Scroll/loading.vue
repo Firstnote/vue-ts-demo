@@ -10,22 +10,28 @@
 import { Component, Prop, Vue, Inject, Provide } from "vue-property-decorator";
 @Component
 export default class Loading extends Vue {
-  balde: number = 12;
+  // constructor(){
+  //   super();
+  // }
   @Prop({
-    default: 12
+    default: 30
   })
   size!: number;
+  test:number = 12;
   get style() {
-    if (!this.size) {
-      return;
+    // console.log(fnContext)
+    if (!load.size) {
+      return{};
     }
-    const value = `${this.size}px`;
+    const value = `${load.size}px`;
     return {
       width: value,
       height: value
     };
   }
+  
 }
+const load = new Loading();
 </script>
 <style lang="stylus">
 @keyframes spinner-fade {
@@ -41,6 +47,7 @@ export default class Loading extends Vue {
     opacity: 0.25;
   }
 }
+
 .zl-loading {
   font-size: 24px;
 }
@@ -52,18 +59,22 @@ export default class Loading extends Vue {
   height: 1em;
 }
 
-.zl-loading-spinner
-  position absolute
-  left 44.5%
-  top 37%
-  width 2px
-  height 25%
-  border-radius 50% / 20%
-  opacity 0.25
-  background-color #ddd
-  animation spinner-fade 1s linear infinite
-  for i in (1...13)
-    &:nth-child({i})
-      animation-delay (i - 1)/12s
-      transform rotate(30deg * (i - 6)) translateY(-150%)
+.zl-loading-spinner {
+  position: absolute;
+  left: 44.5%;
+  top: 37%;
+  width: 2px;
+  height: 25%;
+  border-radius: 50% / 20%;
+  opacity: 0.25;
+  background-color: #ddd;
+  animation: spinner-fade 1s linear infinite;
+
+  for i in (1...13) {
+    &:nth-child({i}) {
+      animation-delay: (i - 1) / 12s;
+      transform: rotate(30deg * (i - 6)) translateY(-150%);
+    }
+  }
+}
 </style>

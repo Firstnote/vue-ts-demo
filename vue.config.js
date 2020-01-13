@@ -1,12 +1,13 @@
 module.exports = {
   publicPath: "./",
-  outputDir: "dist",
+  outputDir: "zl-ui",
   filenameHashing: false,
   productionSourceMap: false,
   configureWebpack:{
     performance: {
       hints: false
-    }
+    },
+    // mode:'development'
   },
   pages: {
     index: {

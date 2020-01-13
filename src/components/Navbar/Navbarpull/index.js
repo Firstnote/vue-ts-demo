@@ -1,6 +1,6 @@
 import Navbarpull from './navbarpull.vue'
 
 Navbarpull.install = function (Vue) {
-  Vue.component(Navbarpull.name,Navbarpull)
+  Vue.component("Navbarpull",Navbarpull)
 }
 export default Navbarpull

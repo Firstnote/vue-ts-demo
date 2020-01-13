@@ -159,7 +159,7 @@ export default class Navbarpull extends Vue {
   navleftclick() {
     this.$emit("navleftclick");
   }
-  navrightclick() {
+  navrightclick(e:DocumentEvent) {
     this.$emit("navrightclick");
   }
   navmiddleclick() {

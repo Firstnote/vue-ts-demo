@@ -6,3 +6,4 @@ declare const BScroll: any
 declare module 'better-scroll' {
   export = BScroll;
 }
+declare module "address"

@@ -1,6 +1,6 @@
 import Chart from './chart.vue'
 
 Chart.install = function (Vue) {
-  Vue.component(Chart.name,Chart)
+  Vue.component("Chart",Chart)
 }
 export default Chart
