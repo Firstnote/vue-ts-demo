@@ -7,6 +7,9 @@ module.exports = {
     performance: {
       hints: false
     },
+    externals:[
+      'vue'
+    ]
     // mode:'development'
   },
   pages: {

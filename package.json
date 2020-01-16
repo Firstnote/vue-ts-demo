@@ -9,7 +9,6 @@
     "eslintx": "eslint example/ --rulesdir rules"
   },
   "dependencies": {
-    "vue": "^2.6.11",
     "better-scroll": "^1.15.2",
     "chart.js": "^2.9.3",
     "core-js": "^3.4.2",
@@ -22,6 +21,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "vue": "^2.6.11",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "4.0.0",
     "@vue/cli-plugin-router": "^4.0.0",
@@ -40,7 +40,6 @@
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "typescript": "~3.5.3",
-    
     "vue-template-compiler": "^2.6.10"
   }
 }
