@@ -37,8 +37,7 @@ import Navbarslot from "../Navbarslot/navbarslot.vue";
 import {
   Component,
   Prop,
-  Vue,
-  Mixins
+  Vue
 } from "vue-property-decorator";
 
 @Component({

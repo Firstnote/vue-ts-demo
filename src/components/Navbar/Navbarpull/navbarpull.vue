@@ -103,7 +103,6 @@ import {
   Prop,
   Vue,
   Provide,
-  Mixins,
   Inject
 } from "vue-property-decorator";
 
