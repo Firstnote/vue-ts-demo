@@ -7,3 +7,4 @@ declare module 'better-scroll' {
   export = BScroll;
 }
 declare module '*'
+// declare module "chartkick"

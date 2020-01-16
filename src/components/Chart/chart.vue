@@ -1,14 +1,14 @@
 
 <template functional>
-  <component v-bind:is="props.type" v-bind="[data.attrs,props]"></component>
+  <component v-bind:is="props.type" v-bind="[data.attrs,props]"/>
 </template>
 <script lang='ts'>
 import "./chart.js";
 
-import { Component, Prop, Vue, Mixins } from "vue-property-decorator";
-// import Chartkick from 'chartkick'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Chartkick from 'chartkick'
 @Component
-// ({ mixins: [Chartkick] })
+({ mixins: [Chartkick] })
 export default class Chart extends Vue {
   @Prop({
     required: false,
