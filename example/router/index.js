@@ -40,6 +40,10 @@ const routes = [
       {
         path:'scroll',
         component:()=>import('../pages/Scroll.vue')
+      },
+      {
+        path:'picviewer',
+        component:()=>import('../pages/Picviewer.vue')
       }
     ]
   },

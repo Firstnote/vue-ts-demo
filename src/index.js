@@ -25,6 +25,7 @@ import Navbarpull from "./components/Navbar/Navbarpull";
 import Chart from "./components/Chart";
 import Addresspicker from "./components/Addresspicker";
 import Scroll from "./components/Scroll";
+import Picviewer from "./components/Picviewer";
 
 const components = [
 	Col,
@@ -35,7 +36,8 @@ const components = [
 	Navbarpull,
 	Chart,
 	Addresspicker,
-	Scroll
+	Scroll,
+	Picviewer
 ];
 
 /* eslint-disable no-undef */

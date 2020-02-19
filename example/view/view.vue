@@ -9,6 +9,7 @@
     <div @click="tocharttest">点击跳转chart</div>
     <div @click="toaddresspickerviewtest">点击跳转addresspicker</div>
     <div @click="toscrollviewtest">点击跳转scroll</div>
+    <div @click="topicviewertest">点击跳转picviewer</div>
   </div>
 </template>
 <script>
@@ -43,6 +44,9 @@ export default {
     },
     toscrollviewtest(){
       this.$router.push("./nonavbarview/scroll")
+    },
+    topicviewertest(){
+      this.$router.push("./nonavbarview/picviewer")
     }
   }
 };
