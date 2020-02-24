@@ -25,26 +25,47 @@ export default class Picviewer extends Vue {
   param!: any; //原生相机传入相框信息
 
   scalePc = 1; //图片缩放比例
-  btn1= {
-      x: 40,//y轴
-      y: 375-30-4-10,//x轴
-      w: 220,
-      h: 30,
-      r: 8,
-      s: "#ffffff"
-  }
-  btn2= {
-      x: 40,//
-      y: 30-4-10,
-      w: 220,
-      h: 30,
-      r: 8,
-      s: "#df3031"
-  }
+  btn1 = {
+    x: 40, //y轴
+    y: 375 - 30 - 4 - 10, //x轴
+    w: 220,
+    h: 30,
+    r: 8,
+    s: "#ffffff"
+  };
+  btn2 = {
+    x: 40, //
+    y: 30 - 4 - 0,
+    w: 220,
+    h: 30,
+    r: 8,
+    s: "#df3031"
+  };
 
+  text1 = {
+    font: "32px PingFangSC-Regular",
+    textAlign: "center",
+    textBaseline: "middle",
+    txt: "完成"
+  };
+  text2 = {
+    font: "32px PingFangSC-Regular",
+    style: "#FFFFFF",
+    textAlign: "center",
+    textBaseline: "middle",
+    txt: "重新扫描"
+  };
+  examplePic1 = {
+    src: exampleFront,
+    x: 100,
+    y: 20,
+    w: 80,
+    h: 60
+  };
   drawBtn(ctx: any, param: any, scalex: number = 1, scaley: number = 1) {
+    //按钮
     ctx.save();
-    ctx.translate(param.x*scalex,param.y*scaley)
+    ctx.translate(param.x * scalex, param.y * scaley);
     ctx.rotate((90 * Math.PI) / 180);
     ctx.beginPath();
     ctx.lineWidth = 2;
@@ -75,9 +96,45 @@ export default class Picviewer extends Vue {
     if (param.f) {
       ctx.fill();
     }
-    ctx.restore()
+    ctx.restore();
   }
- 
+
+  drawText(
+    //标语
+    ctx: any,
+    param: any,
+    btn: any,
+    scalex: number = 1,
+    scaley: number = 1
+  ) {
+    ctx.save();
+    Object.assign(param, btn);
+    ctx.translate(param.x * scalex, param.y * scaley);
+    ctx.rotate((90 * Math.PI) / 180);
+    ctx.font = param.font;
+    ctx.fillStyle = ctx.fillStyle ? ctx.fillStyle : "#a8a8a8";
+    if (param.textAlign) {
+      ctx.textAlign = param.textAlign;
+    }
+    if (param.textBaseline) {
+      ctx.textBaseline = param.textBaseline;
+    }
+    ctx.fillText(param.txt, param.w * 0.5, param.h * 0.5);
+    ctx.restore();
+  }
+
+  drawPic(ctx: any, param: any, scalex: number = 1, scaley: number = 1) {
+    //画图
+    let img = new Image();
+    img.src = param.src;
+    img.onload = function() {
+      ctx.save();
+      ctx.translate(param.x * scalex, param.y * scaley);
+      // ctx.rotate((90 * Math.PI) / 180);
+      ctx.drawImage(img, 0, 0, param.w, param.h);
+      ctx.restore();
+    };
+  }
 
   get widthPc() {
     return (this.param.widthwrap - this.param.width) / 2 / this.param.widthwrap;
@@ -105,26 +162,30 @@ export default class Picviewer extends Vue {
       height = this.param.width * this.scalePc, //绘制原图大小 可修改
       y = (this.param.widthwrap - height) / 2, //预览图绘制开始位置 可修改
       x = (this.param.heightwrap - this.param.height) / 2; //预览图绘制开始位置 可修改
-    
-    //画按钮
-    this.drawBtn(ctx,this.btn1)
-    this.drawBtn(ctx,this.btn2)
-    ctx.translate(canvas.width, 0);
-    ctx.rotate((90 * Math.PI) / 180);
+
+    //画按钮和文本
+    this.drawBtn(ctx, this.btn1);
+    this.drawText(ctx, this.text1, this.btn1);
+    this.drawBtn(ctx, this.btn2);
+    this.drawText(ctx, this.text2, this.btn2);
+    this.drawPic(ctx, this.examplePic1);
+
     // 画预览图片
     let img = new Image();
     img.src = idcard;
     let that = this;
     img.onload = function() {
+      ctx.save();
+      ctx.translate(canvas.width, 0);
+      ctx.rotate((90 * Math.PI) / 180);
       let sx = img.width * that.heightPc, //切片开始位置,需结合原生拍摄时的状态决定
         sy = img.height * that.widthPc, //切片开始位置
         swidth = img.width * (1 - that.heightPc * 2), //切片大小
         sheight = img.height * (1 - that.widthPc * 2); //切片大小
       let picData = [img, sx, sy, swidth, sheight, x, y, width, height];
       ctx.drawImage(...picData);
+      ctx.restore();
     };
-
-
   }
 }
 </script>
