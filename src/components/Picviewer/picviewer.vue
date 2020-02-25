@@ -50,17 +50,49 @@ export default class Picviewer extends Vue {
   };
   text2 = {
     font: "32px PingFangSC-Regular",
-    style: "#FFFFFF",
+    fillStyle: "#FFFFFF",
     textAlign: "center",
     textBaseline: "middle",
     txt: "重新扫描"
   };
+  topic = {
+    x: 0,
+    y: 0,
+    w: 0,
+    h: 0,
+    font: "20px PingFangSC-Regular",
+    fillStyle: "#FFFFFF",
+    textAlign: "center",
+    textBaseline: "middle",
+    txt: "请您核对照片"
+  };
   examplePic1 = {
+    //TODO 数据先写死
     src: exampleFront,
-    x: 100,
-    y: 20,
-    w: 80,
-    h: 60
+    x: 250,
+    y: 500,
+    w: 100,
+    h: 75
+  };
+  examplePicText1 = {
+    x: 0,
+    y: 0,
+    w: 0,
+    h: 0,
+    font: "14px PingFangSC-Regular",
+    textAlign: "center",
+    textBaseline: "middle",
+    txt: "请将身份证人面像"
+  };
+  examplePicText2 = {
+    x: 0,
+    y: 0,
+    w: 0,
+    h: 0,
+    font: "14px PingFangSC-Regular",
+    textAlign: "center",
+    textBaseline: "middle",
+    txt: "放置在扫描框中"
   };
   drawBtn(ctx: any, param: any, scalex: number = 1, scaley: number = 1) {
     //按钮
@@ -103,16 +135,15 @@ export default class Picviewer extends Vue {
     //标语
     ctx: any,
     param: any,
-    btn: any,
     scalex: number = 1,
     scaley: number = 1
   ) {
     ctx.save();
-    Object.assign(param, btn);
+
     ctx.translate(param.x * scalex, param.y * scaley);
     ctx.rotate((90 * Math.PI) / 180);
     ctx.font = param.font;
-    ctx.fillStyle = ctx.fillStyle ? ctx.fillStyle : "#a8a8a8";
+    ctx.fillStyle = param.fillStyle ? param.fillStyle : "#a8a8a8";
     if (param.textAlign) {
       ctx.textAlign = param.textAlign;
     }
@@ -130,7 +161,7 @@ export default class Picviewer extends Vue {
     img.onload = function() {
       ctx.save();
       ctx.translate(param.x * scalex, param.y * scaley);
-      // ctx.rotate((90 * Math.PI) / 180);
+      ctx.rotate((90 * Math.PI) / 180);
       ctx.drawImage(img, 0, 0, param.w, param.h);
       ctx.restore();
     };
@@ -162,15 +193,36 @@ export default class Picviewer extends Vue {
       height = this.param.width * this.scalePc, //绘制原图大小 可修改
       y = (this.param.widthwrap - height) / 2, //预览图绘制开始位置 可修改
       x = (this.param.heightwrap - this.param.height) / 2; //预览图绘制开始位置 可修改
-
+    //画标题
+    this.topic.x = 320;
+    this.topic.y = 0;
+    this.topic.w = width;
+    this.topic.h = 30;
+    this.drawText(ctx, this.topic);
     //画按钮和文本
     this.drawBtn(ctx, this.btn1);
-    this.drawText(ctx, this.text1, this.btn1);
+    Object.assign(this.text1, this.btn1);
+    this.drawText(ctx, this.text1);
     this.drawBtn(ctx, this.btn2);
-    this.drawText(ctx, this.text2, this.btn2);
+    Object.assign(this.text2, this.btn2);
+    this.drawText(ctx, this.text2);
+
+    //画示例图片
     this.drawPic(ctx, this.examplePic1);
 
+    //示例图片配套文字
+    let copyObject = Object.assign({}, this.examplePic1);
+    copyObject.h = copyObject.h * 0.8;
+    Object.assign(this.examplePicText1, copyObject);
+    this.examplePicText1.x = this.examplePicText1.x - this.examplePicText1.h;
+    this.drawText(ctx, this.examplePicText1);
+    Object.assign(this.examplePicText2, copyObject);
+    this.examplePicText2.x =
+      this.examplePicText2.x - this.examplePicText2.h - 20;
+    this.drawText(ctx, this.examplePicText2);
+
     // 画预览图片
+    //TODO需要重新绘制
     let img = new Image();
     img.src = idcard;
     let that = this;
