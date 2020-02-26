@@ -94,6 +94,7 @@ export default class Picviewer extends Vue {
     textBaseline: "middle",
     txt: "放置在扫描框中"
   };
+
   drawBtn(ctx: any, param: any, scalex: number = 1, scaley: number = 1) {
     //按钮
     ctx.save();
@@ -158,11 +159,20 @@ export default class Picviewer extends Vue {
     //画图
     let img = new Image();
     img.src = param.src;
+    let that = this;
     img.onload = function() {
       ctx.save();
       ctx.translate(param.x * scalex, param.y * scaley);
       ctx.rotate((90 * Math.PI) / 180);
-      ctx.drawImage(img, 0, 0, param.w, param.h);
+      if (param.start) {
+        let sx = img.width * that.heightPc, //切片开始位置,需结合原生拍摄时的状态决定
+          sy = img.height * that.widthPc, //切片开始位置
+          swidth = img.width * (1 - that.heightPc * 2), //切片大小
+          sheight = img.height * (1 - that.widthPc * 2); //切片大小
+        ctx.drawImage(img, sx, sy, swidth, sheight, 0, 0, param.w, param.h);
+      } else {
+        ctx.drawImage(img, 0, 0, param.w, param.h);
+      }
       ctx.restore();
     };
   }
@@ -194,9 +204,9 @@ export default class Picviewer extends Vue {
       y = (this.param.widthwrap - height) / 2, //预览图绘制开始位置 可修改
       x = (this.param.heightwrap - this.param.height) / 2; //预览图绘制开始位置 可修改
     //画标题
-    this.topic.x = 320;
-    this.topic.y = 0;
-    this.topic.w = width;
+    this.topic.x = (canvas.width + this.param.width) * 0.5*1.1;
+    this.topic.y = (canvas.height - this.param.height) * 0.5 * 0.5;
+    this.topic.w = this.param.height * this.scalePc;
     this.topic.h = 30;
     this.drawText(ctx, this.topic);
     //画按钮和文本
@@ -221,23 +231,41 @@ export default class Picviewer extends Vue {
       this.examplePicText2.x - this.examplePicText2.h - 20;
     this.drawText(ctx, this.examplePicText2);
 
+    // let img = new Image();
+    // img.src = idcard;
+    // let that = this;
+    // img.onload = function() {
+    //   ctx.save();
+    //   ctx.translate(canvas.width, 0);
+    //   ctx.rotate((90 * Math.PI) / 180);
+    //   let sx = img.width * that.heightPc, //切片开始位置,需结合原生拍摄时的状态决定
+    //     sy = img.height * that.widthPc, //切片开始位置
+    //     swidth = img.width * (1 - that.heightPc * 2), //切片大小
+    //     sheight = img.height * (1 - that.widthPc * 2); //切片大小
+    //   let picData = [img, sx, sy, swidth, sheight, x, y, width, height];
+    //   ctx.drawImage(...picData);
+    //   ctx.restore();
+    // };
+    //异步获取图片
+    // let getPic = new Promise(function(resolve) {
+    //   setTimeout(function() {
+    //     resolve("hello");
+    //   }, 1000);
+    // }).then(function(resolve) {
+    //   console.log(resolve);
+    // });
+
     // 画预览图片
-    //TODO需要重新绘制
-    let img = new Image();
-    img.src = idcard;
-    let that = this;
-    img.onload = function() {
-      ctx.save();
-      ctx.translate(canvas.width, 0);
-      ctx.rotate((90 * Math.PI) / 180);
-      let sx = img.width * that.heightPc, //切片开始位置,需结合原生拍摄时的状态决定
-        sy = img.height * that.widthPc, //切片开始位置
-        swidth = img.width * (1 - that.heightPc * 2), //切片大小
-        sheight = img.height * (1 - that.widthPc * 2); //切片大小
-      let picData = [img, sx, sy, swidth, sheight, x, y, width, height];
-      ctx.drawImage(...picData);
-      ctx.restore();
+    let viewPic = {
+      src: idcard,
+      x: (canvas.width + this.param.width) * 0.5,
+      y: (canvas.height - this.param.height) * 0.5 * 0.5,
+      w: width,
+      h: height,
+      start: true
     };
+
+    this.drawPic(ctx, viewPic);
   }
 }
 </script>
