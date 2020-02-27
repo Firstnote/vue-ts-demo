@@ -15,8 +15,8 @@ export default class Picviewer extends Vue {
   @Prop({
     default: () => {
       return {
-        width: 220, //相框宽度
-        height: 360, //相框高度
+        width: 260, //相框宽度 13
+        height: 420, //相框高度 21
         widthwrap: 375, //相机宽度
         heightwrap: 500 //相机高度
       };
@@ -26,30 +26,30 @@ export default class Picviewer extends Vue {
 
   scalePc = 1; //图片缩放比例
   btn1 = {
-    x: 40, //y轴
-    y: 375 - 30 - 4 - 10, //x轴
-    w: 220,
-    h: 30,
+    x: 0, //y轴
+    y: 0, //x轴
+    w: 0,
+    h: 0,
     r: 8,
     s: "#ffffff"
   };
   btn2 = {
-    x: 40, //
-    y: 30 - 4 - 0,
-    w: 220,
-    h: 30,
+    x: 0, //
+    y: 0,
+    w: 0,
+    h: 0,
     r: 8,
     s: "#df3031"
   };
 
   text1 = {
-    font: "32px PingFangSC-Regular",
+    font: "16px PingFangSC-Regular",
     textAlign: "center",
     textBaseline: "middle",
     txt: "完成"
   };
   text2 = {
-    font: "32px PingFangSC-Regular",
+    font: "16px PingFangSC-Regular",
     fillStyle: "#FFFFFF",
     textAlign: "center",
     textBaseline: "middle",
@@ -203,21 +203,63 @@ export default class Picviewer extends Vue {
       height = this.param.width * this.scalePc, //绘制原图大小 可修改
       y = (this.param.widthwrap - height) / 2, //预览图绘制开始位置 可修改
       x = (this.param.heightwrap - this.param.height) / 2; //预览图绘制开始位置 可修改
+    
+    //异步获取图片
+    // let getPic = new Promise(function(resolve) {
+    //   setTimeout(function() {
+    //     resolve("hello");
+    //   }, 1000);
+    // }).then(function(resolve) {
+    //   console.log(resolve);
+    // });
+    // 画预览图片
+    let viewPic = {
+      src: idcard,
+      x: (canvas.width + this.param.width) * 0.5,
+      y: (canvas.height - this.param.height) * 0.5 * 0.5,
+      w: width,
+      h: height,
+      start: true
+    };
+    this.drawPic(ctx, viewPic);
+    
     //画标题
-    this.topic.x = (canvas.width + this.param.width) * 0.5*1.1;
+    let topicHeightPercent = 0.4; //标题高度百分比
+    // this.topic.x = (canvas.width + this.param.width) * 0.5*1.1;
+    this.topic.x =
+      canvas.width -
+      (1 - topicHeightPercent) * 0.5 * 0.5 * (canvas.width - this.param.width);
     this.topic.y = (canvas.height - this.param.height) * 0.5 * 0.5;
-    this.topic.w = this.param.height * this.scalePc;
-    this.topic.h = 30;
+    this.topic.w = this.param.height;
+    this.topic.h = 0.5 * (canvas.width - this.param.width) * topicHeightPercent;
     this.drawText(ctx, this.topic);
+
     //画按钮和文本
+    let xper = 0.4, //按钮高度百分比
+      yper = 0.4; //按钮宽度百分比
+    this.btn1.x =
+      0.5 * (canvas.width - this.param.width) * (1 - (1 - xper) / 2);
+    this.btn1.y =
+      (canvas.height - this.param.height) * 0.5 * 0.5 +
+      (0.5 + 0.25 * (1 - yper * 2)) * this.param.height;
+    this.btn1.w = yper * this.param.height;
+    this.btn1.h = xper * 0.5 * (canvas.width - this.param.width);
     this.drawBtn(ctx, this.btn1);
     Object.assign(this.text1, this.btn1);
     this.drawText(ctx, this.text1);
+    this.btn2.x = this.btn1.x;
+    this.btn2.y =
+      0.5 * 0.5 * (canvas.height - this.param.height) +
+      0.25 * (1 - 2 * xper) * this.param.height;
+    this.btn2.w = this.btn1.w;
+    this.btn2.h = this.btn1.h;
     this.drawBtn(ctx, this.btn2);
     Object.assign(this.text2, this.btn2);
     this.drawText(ctx, this.text2);
 
     //画示例图片
+    this.examplePic1.x = 250;
+    this.examplePic1.y = 500; 
     this.drawPic(ctx, this.examplePic1);
 
     //示例图片配套文字
@@ -231,41 +273,10 @@ export default class Picviewer extends Vue {
       this.examplePicText2.x - this.examplePicText2.h - 20;
     this.drawText(ctx, this.examplePicText2);
 
-    // let img = new Image();
-    // img.src = idcard;
-    // let that = this;
-    // img.onload = function() {
-    //   ctx.save();
-    //   ctx.translate(canvas.width, 0);
-    //   ctx.rotate((90 * Math.PI) / 180);
-    //   let sx = img.width * that.heightPc, //切片开始位置,需结合原生拍摄时的状态决定
-    //     sy = img.height * that.widthPc, //切片开始位置
-    //     swidth = img.width * (1 - that.heightPc * 2), //切片大小
-    //     sheight = img.height * (1 - that.widthPc * 2); //切片大小
-    //   let picData = [img, sx, sy, swidth, sheight, x, y, width, height];
-    //   ctx.drawImage(...picData);
-    //   ctx.restore();
-    // };
-    //异步获取图片
-    // let getPic = new Promise(function(resolve) {
-    //   setTimeout(function() {
-    //     resolve("hello");
-    //   }, 1000);
-    // }).then(function(resolve) {
-    //   console.log(resolve);
-    // });
 
-    // 画预览图片
-    let viewPic = {
-      src: idcard,
-      x: (canvas.width + this.param.width) * 0.5,
-      y: (canvas.height - this.param.height) * 0.5 * 0.5,
-      w: width,
-      h: height,
-      start: true
-    };
 
-    this.drawPic(ctx, viewPic);
+
+    
   }
 }
 </script>
