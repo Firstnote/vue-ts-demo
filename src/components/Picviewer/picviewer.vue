@@ -10,6 +10,30 @@ import exampleFront from "../../common/img/idcardfront.jpg";
 import exampleBack from "../../common/img/idcardback.jpg";
 import idcard from "../../common/img/idcard-get.jpg";
 import { Component, Prop, Vue, Watch, Emit } from "vue-property-decorator";
+
+//获取事件触发position
+function getEventPosition(ev: MouseEvent) { 
+  return { x: ev.clientX, y: ev.clientY };
+}
+
+//事件绑定函数
+function attach(position: { x: number; y: number }, param: any, callback: any) {
+  let { x, y } = position;
+  if (
+    x < param.x &&
+    x > param.x - param.h &&
+    y > param.y &&
+    y < param.y + param.w
+  ) {
+    callback(param);
+  }
+}
+
+function myClick(canvas:any,param:any,callback:any){
+  canvas.addEventListener('click',function(ev:MouseEvent){
+    attach(getEventPosition(ev),param,callback)
+  })
+}
 @Component
 export default class Picviewer extends Vue {
   @Prop({
@@ -177,6 +201,13 @@ export default class Picviewer extends Vue {
     };
   }
 
+  btn1Callback(param:any){
+      console.log(param.txt)
+  }
+  btn2Callback(param:any){
+      console.log(param.txt)
+  }
+  
   get widthPc() {
     return (this.param.widthwrap - this.param.width) / 2 / this.param.widthwrap;
   }
@@ -203,7 +234,7 @@ export default class Picviewer extends Vue {
       height = this.param.width * this.scalePc, //绘制原图大小 可修改
       y = (this.param.widthwrap - height) / 2, //预览图绘制开始位置 可修改
       x = (this.param.heightwrap - this.param.height) / 2; //预览图绘制开始位置 可修改
-    
+
     //异步获取图片
     // let getPic = new Promise(function(resolve) {
     //   setTimeout(function() {
@@ -222,7 +253,7 @@ export default class Picviewer extends Vue {
       start: true
     };
     this.drawPic(ctx, viewPic);
-    
+
     //画标题
     let topicHeightPercent = 0.4; //标题高度百分比
     // this.topic.x = (canvas.width + this.param.width) * 0.5*1.1;
@@ -247,6 +278,8 @@ export default class Picviewer extends Vue {
     this.drawBtn(ctx, this.btn1);
     Object.assign(this.text1, this.btn1);
     this.drawText(ctx, this.text1);
+    myClick(canvas,this.text1,this.btn1Callback)
+
     this.btn2.x = this.btn1.x;
     this.btn2.y =
       0.5 * 0.5 * (canvas.height - this.param.height) +
@@ -256,10 +289,12 @@ export default class Picviewer extends Vue {
     this.drawBtn(ctx, this.btn2);
     Object.assign(this.text2, this.btn2);
     this.drawText(ctx, this.text2);
+    myClick(canvas,this.text2,this.btn2Callback)
+
 
     //画示例图片
     this.examplePic1.x = 250;
-    this.examplePic1.y = 500; 
+    this.examplePic1.y = 500;
     this.drawPic(ctx, this.examplePic1);
 
     //示例图片配套文字
@@ -272,9 +307,6 @@ export default class Picviewer extends Vue {
     this.examplePicText2.x =
       this.examplePicText2.x - this.examplePicText2.h - 20;
     this.drawText(ctx, this.examplePicText2);
-
-
-
 
     
   }
