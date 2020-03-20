@@ -21,7 +21,6 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "vue": "^2.6.11",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "4.0.0",
     "@vue/cli-plugin-router": "^4.0.0",
@@ -31,8 +30,9 @@
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/eslint-config-typescript": "^4.0.0",
     "eslint": "^6.8.0",
+    "eslint-plugin-fnlint": "^0.0.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^7.0.0-alpha.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "mocha": "^7.0.0",
@@ -40,6 +40,7 @@
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "typescript": "~3.5.3",
+    "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.10"
   }
 }
