@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "better-scroll": "^1.15.2",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "core-js": "^3.4.2",
     "fastclick": "^1.0.6",
     "vue-chartkick": "^0.6.0",
